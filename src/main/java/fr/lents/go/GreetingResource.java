@@ -10,12 +10,6 @@ import jakarta.ws.rs.core.MediaType;
 @Path("/hello")
 public class GreetingResource {
 
-    private final TodoRepository todoRepository;
-
-    public GreetingResource(TodoRepository todoRepository) {
-        this.todoRepository = todoRepository;
-    }
-
 
 
     @GET
