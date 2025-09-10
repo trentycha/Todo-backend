@@ -6,6 +6,8 @@ import jakarta.ws.rs.GET;
 import jakarta.ws.rs.Path;
 import jakarta.ws.rs.Produces;
 import jakarta.ws.rs.core.MediaType;
+import java.util.List;
+import java.util.ArrayList;
 
 @Path("/hello")
 public class TodoService {
@@ -16,10 +18,10 @@ public class TodoService {
         this.todoRepository = todoRepository;
     }
 
-    public List<TodoDTO> getAll() {
-        List<TodoDTO> result = new ArrayList<>();
+    public List<TodoItemDto> getAll() {
+        List<TodoItemDto> result = new ArrayList<>();
 
-        todoRepository.finAll().forEach(todo -> result.add(new TodoDTO(todo.getId(), todo.getText, todo.isCompleted)))
+        todoRepository.findAll().forEach(todoItem -> result.add(new TodoItemDto(todoItem.getId(), todoItem.getText(), todoItem.isCompleted())));
 
                 return result;
     }

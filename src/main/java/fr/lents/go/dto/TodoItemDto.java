@@ -1,4 +1,4 @@
 package fr.lents.go.dto;
 
-public class TodoItemDto {
+public record TodoItemDto (Integer id, String text, boolean completed) {
 }
