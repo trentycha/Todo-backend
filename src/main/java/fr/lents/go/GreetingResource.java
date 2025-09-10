@@ -8,12 +8,20 @@ import jakarta.ws.rs.Produces;
 import jakarta.ws.rs.core.MediaType;
 
 @Path("/hello")
-public class GreetingResource {
+public class TodoService {
 
     private final TodoRepository todoRepository;
 
-    public GreetingResource(TodoRepository todoRepository) {
+    public TodoService(TodoRepository todoRepository) {
         this.todoRepository = todoRepository;
+    }
+
+    public List<TodoDTO> getAll() {
+        List<TodoDTO> result = new ArrayList<>();
+
+        todoRepository.finAll().forEach(todo -> result.add(new TodoDTO(todo.getId(), todo.getText, todo.isCompleted)))
+
+                return result;
     }
 
     @GET
