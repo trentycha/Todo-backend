@@ -8,10 +8,6 @@ import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.List;
 
-import static jdk.internal.agent.Agent.getText;
-import static org.jboss.tm.TxUtils.isCompleted;
-import static sun.security.pkcs11.wrapper.Functions.getId;
-
 @Service
 public class TodoService {
 
@@ -21,13 +17,9 @@ private final TodoRepository todoRepository;
         this.todoRepository = todoRepository;
     }
 
-
-public List<TodoItemDto> getAll() {
-
-        List<TodoItemDto> tasks = new ArrayList<>();
-        todoRepository.findAll().forEach(item -> tasks.add(new TodoItemDto(item.getId(), item.getText(), item.isCompleted())));
-
-    return tasks;
-}
-
+    public List<TodoItemDto> getAll() {
+        List<TodoItemDto> result = new ArrayList<>();
+        todoRepository.findAll().forEach(item -> result.add(new TodoItemDto(item.getId(), item.getText(), item.isCompleted())));
+        return result;
+    }
 }

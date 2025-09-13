@@ -11,7 +11,7 @@ import java.util.List;
 @Path("/todo")
 public class TodoController {
 
-    public final TodoService todoService;
+private final TodoService todoService;
 
     public TodoController(TodoService todoService) {
         this.todoService = todoService;
@@ -19,9 +19,10 @@ public class TodoController {
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    public List<TodoItemDto> getallTodo() {
+    public List<TodoItemDto> getAllTodo() {
         return todoService.getAll();
     }
+
 }
 
 
